@@ -1,3 +1,52 @@
-<h1>Hello, this is Zinuo Yi</h1>
-<h2>What about try something new?</h2>
-<h3>Add files</h3>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Zinuo Chat</title>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" /> -->
+    <!-- 样式文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
+
+    <!-- JavaScript 依赖（Vue + BotUI）-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.min.js"></script>
+
+</head>
+
+<body>
+  <div id="botui-app"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.min.js"></script>
+  <script>
+    var botui = new BotUI('botui-app');
+
+    function sendMessage(msg) {
+      fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg })
+      })
+      .then(res => res.json())
+      .then(data => {
+        botui.message.add({ content: data.reply });
+        chatLoop();  // 等用户再次输入
+      });
+    }
+
+    function chatLoop() {
+      botui.action.text({ action: { placeholder: "请输入…" } })
+        .then(res => {
+          botui.message.add({ human: true, content: res.value });
+          sendMessage(res.value);
+        });
+    }
+
+    // 初始消息
+    botui.message.add({ content: "你好，我是 Zinuo 的小助手，有什么可以帮你？🤖" })
+      .then(chatLoop);
+  </script>
+</body>
+</html>
