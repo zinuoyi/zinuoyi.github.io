@@ -1,52 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Zinuo Chat</title>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" /> -->
-    <!-- 样式文件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
-
-    <!-- JavaScript 依赖（Vue + BotUI）-->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.min.js"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zinuo Yi</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div id="botui-app"></div>
+  <main>
+    <section id="hero">
+      <div class="hero-inner">
+        <img src="photo.jpg" alt="Zinuo Yi" class="avatar" />
+        <div>
+          <h1>Zinuo Yi</h1>
+          <p class="tagline">Robotics · Deep Learning · Autonomous Systems</p>
+          <p class="bio">
+        Master's student in Robotics at TU Munich, specializing in deep learning,
+        point cloud processing, and autonomous vehicles. Research published at
+        NeurIPS 2023 GLFrontiers Workshop. Thesis on dynamic object perception
+        submitted to IROS 2025.
+      </p>
+      <div class="links">
+        <a href="https://github.com/zinuoyi" target="_blank">GitHub</a>
+        <a href="mailto:zinuo.yi@tum.de">Email</a>
+      </div>
+        </div>
+      </div>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.min.js"></script>
-  <script>
-    var botui = new BotUI('botui-app');
+    <section id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="title">M.Sc. Robotics, Cognition and Intelligence</span>
+          <span class="date">2022 – 2025</span>
+        </div>
+        <span class="org">Technical University of Munich</span>
+        <p>Specialization in robotics and deep learning. GPA: 1.1. Recipient of Deutschlandstipendium 2023–2024.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="title">B.Sc. Automation</span>
+          <span class="date">2016 – 2021</span>
+        </div>
+        <span class="org">Tongji University, Shanghai</span>
+        <p>Control theory, embedded systems, circuit theory. GPA: 1.5 (VPD).</p>
+      </div>
+    </section>
 
-    function sendMessage(msg) {
-      fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: msg })
-      })
-      .then(res => res.json())
-      .then(data => {
-        botui.message.add({ content: data.reply });
-        chatLoop();  // 等用户再次输入
-      });
-    }
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="title">Master's Thesis — Moving Object Segmentation via 3D LiDAR</span>
+          <span class="date">2024 – 2025</span>
+        </div>
+        <span class="org">Siemens AG, Munich</span>
+        <p>Point-wise moving object segmentation using visibility difference and Bayes Filter. Competitive with SotA deep learning models. Python (Open3D, PyTorch) + C++ via Pybind11.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="title">Working Student — AGV Motion Planning</span>
+          <span class="date">2023 – 2024</span>
+        </div>
+        <span class="org">Siemens AG, Munich</span>
+        <p>Developed behavior tree nodes and improved motion planning for AGVs using C++ and ROS2. Evaluated nav2 stack integration with Gazebo demos.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="title">Embedded Systems Software Developer</span>
+          <span class="date">2021 – 2022</span>
+        </div>
+        <span class="org">SAIC Motor Corporation, Shanghai</span>
+        <p>Maintained S2S communication modules in C++ using Adaptive AUTOSAR. Built automated testing software for signal validation.</p>
+      </div>
+    </section>
 
-    function chatLoop() {
-      botui.action.text({ action: { placeholder: "请输入…" } })
-        .then(res => {
-          botui.message.add({ human: true, content: res.value });
-          sendMessage(res.value);
-        });
-    }
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="title">Adversarial Attacks on Graph Neural Networks</span>
+          <span class="date">2023</span>
+        </div>
+        <span class="org">TU Munich · <em>Published at NeurIPS 2023 GLFrontiers Workshop</em></span>
+        <p>Evaluated robustness of Graph Contrastive Learning models under PGD and PRBCD attacks. Implemented with PyG and PyTorch.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="title">Joint Diagonalization in 3D Point Cloud Shape Matching</span>
+          <span class="date">2023</span>
+        </div>
+        <span class="org">TU Munich · Computer Vision Group</span>
+        <p>Extended functional map joint diagonalization to non-isometric scenarios using DiffusionNet and PyTorch.</p>
+      </div>
+    </section>
 
-    // 初始消息
-    botui.message.add({ content: "你好，我是 Zinuo 的小助手，有什么可以帮你？🤖" })
-      .then(chatLoop);
-  </script>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div>
+          <h3>Programming</h3>
+          <p>C/C++, Python, Git, Linux, Docker</p>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <p>Chinese (Native), English (C1–C2), German (B2–C1)</p>
+        </div>
+        <div>
+          <h3>Interests</h3>
+          <p>Piano, classical music</p>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
